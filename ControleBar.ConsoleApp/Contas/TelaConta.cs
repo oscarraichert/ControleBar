@@ -1,6 +1,7 @@
 ﻿using ControleBar.ConsoleApp.Compartilhado;
 using ControleBar.ConsoleApp.ModuloGarcom;
 using ControleBar.ConsoleApp.ModuloMesa;
+using ControleBar.ConsoleApp.Produtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,15 @@ namespace ControleBar.ConsoleApp.Contas
         private readonly Notificador notificador;
         public TelaCadastroGarcom telaGarcomConta;
         public TelaMesa telaMesaConta;
+        public TelaProduto telaProduto;
 
-        public TelaConta(Notificador notificador, TelaCadastroGarcom telaGarcom, TelaMesa telaMesa) : base ("Tela Conta")
+        public TelaConta(Notificador notificador, TelaCadastroGarcom telaGarcom, TelaMesa telaMesa, TelaProduto telaProduto) : base ("Tela Conta")
         {
             this.repositorioConta = new RepositorioConta();
             this.notificador = notificador;
             telaGarcomConta = telaGarcom;
             telaMesaConta = telaMesa;
+            this.telaProduto = telaProduto;
         }
 
         public override string MostrarOpcoes()
@@ -66,6 +69,16 @@ namespace ControleBar.ConsoleApp.Contas
             int indice = Convert.ToInt32(Console.ReadLine());
 
             Conta conta = repositorioConta.registros[indice];
+
+            Console.WriteLine("Selecione o produto que deseja adicionar: ");
+
+            telaProduto.VisualizarRegistros("Tela");
+
+            int indiceProduto = Convert.ToInt32(Console.ReadLine());
+
+            Produto produto = telaProduto.repositorioProduto.SelecionarRegistro(indiceProduto);
+
+            conta.Produtos.Add(produto);
         }
 
         public void Inserir()

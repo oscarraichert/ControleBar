@@ -24,7 +24,7 @@ namespace ControleBar.ConsoleApp.Compartilhado
             telaMesa = new TelaMesa(repositorioMesa, notificador);
             repositorioProduto = new RepositorioProduto();
             telaProduto = new TelaProduto(repositorioProduto, notificador);
-            telaConta = new TelaConta(notificador, telaCadastroGarcom, telaMesa);
+            telaConta = new TelaConta(notificador, telaCadastroGarcom, telaMesa, telaProduto);
 
             PopularAplicacao();
         }
