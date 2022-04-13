@@ -62,11 +62,11 @@ namespace ControleBar.ConsoleApp.Contas
 
         private void AdicionarProdutos()
         {
-            Console.WriteLine("Selecione a conta que deseja adicionar produtos: ");
-
             VisualizarRegistros("Tela");
 
-            int indice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Selecione a conta que deseja adicionar produtos: ");
+
+            int indice = Convert.ToInt32(Console.ReadLine()) - 1;
 
             Conta conta = repositorioConta.registros[indice];
 
@@ -74,7 +74,7 @@ namespace ControleBar.ConsoleApp.Contas
 
             telaProduto.VisualizarRegistros("Tela");
 
-            int indiceProduto = Convert.ToInt32(Console.ReadLine());
+            int indiceProduto = Convert.ToInt32(Console.ReadLine()) - 1;
 
             Produto produto = telaProduto.repositorioProduto.SelecionarRegistro(indiceProduto);
 
