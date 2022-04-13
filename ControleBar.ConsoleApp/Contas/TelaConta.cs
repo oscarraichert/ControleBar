@@ -78,7 +78,7 @@ namespace ControleBar.ConsoleApp.Contas
 
             Produto produto = telaProduto.repositorioProduto.SelecionarRegistro(indiceProduto);
 
-            conta.Produtos.Add(produto);
+            conta.Produtos.Add(produto); //tentei
         }
 
         public void Inserir()
